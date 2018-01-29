@@ -8,4 +8,10 @@ public class BookProduct extends  Product {
         super(name,price);
         this.numOfPages = numOfPages;
     }
+
+    public int getNumOfPages() {
+        return numOfPages;
+    }
+
 }
+
