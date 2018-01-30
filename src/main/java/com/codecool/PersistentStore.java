@@ -1,7 +1,7 @@
 package com.codecool;
 
 public class PersistentStore {
-    public void storeProduct(){
+    public static void storeProduct(Product product){
 
     }
 }
