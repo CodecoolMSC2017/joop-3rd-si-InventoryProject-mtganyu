@@ -1,30 +1,39 @@
 package com.codecool;
 
-import java.util.ArrayList;
-import  java.util.List;
 public class StoreManager {
+    private StoreCapable storage;
 
-    List<CDProduct> cds = new ArrayList<>();
-    List<BookProduct> books = new ArrayList<>();
+    public void addStorage(StoreCapable storage) {
+        this.storage = storage;
 
-    public String addStorage(StoreCapable storage){
-        return "";
     }
 
-    public void addCDProduct(String name, int price, int tracks){
-        CDProduct cd = new CDProduct(name,price,tracks);
-        this.cds.add(cd);
+    public void addCDProduct(String name, int price, int tracks) {
+        storage.storeCDProduct(name, price, tracks);
     }
 
-    public void addBookProduct(String name, int price, int pages){
-        BookProduct book = new BookProduct(name,price,pages);
-        this.books.add(book);
+    public void addBookProduct(String name, int price, int size) {
+        storage.storeBookProduct(name, price, size);
     }
 
-    public String listProducts(){
-        return "";
+    public String listProducts() {
+        String products = "";
+        for (Product product : storage.getAllProduct()) {
+            products += product.name + ", ";
+
+        }
+        return products;
+
     }
-    public int getTotalProductPrice(){
-        return 0;
+
+    public int getTotalProductPrice() {
+        int price = 0;
+        for (Product product : storage.getAllProduct()) {
+            price += product.price;
+
+        }
+        return price;
     }
+
 }
+

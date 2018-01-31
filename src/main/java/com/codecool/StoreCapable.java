@@ -1,19 +1,13 @@
 package com.codecool;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public interface StoreCapable {
+    public List<Product> getAllProduct();
 
-    default List<Product> getAllProduct(){
-        return null;
-    }
+    public void storeCDProduct(String name, int price, int size);
 
-    default  void storeCDProduct(String name,int price,int tracks){
+    public void storeBookProduct(String name, int price, int size);
 
-    }
-
-    default void storeBookProduct(String name,int price,int pages){
-
-    }
 }
