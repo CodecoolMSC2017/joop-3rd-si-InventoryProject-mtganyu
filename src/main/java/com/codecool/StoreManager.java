@@ -1,4 +1,5 @@
 package com.codecool;
+import java.util.List;
 
 public class StoreManager {
     private StoreCapable storage;
@@ -17,13 +18,16 @@ public class StoreManager {
     }
 
     public String listProducts() {
+        List<Product> listOfProducts = storage.getAllProduct();
         String products = "";
-        for (Product product : storage.getAllProduct()) {
-            products += product.name + ", ";
-
+        for (int i = 0; i < listOfProducts.size(); i++) {
+            if (i == listOfProducts.size() - 1) {
+                products += listOfProducts.get(i).getName();
+            } else {
+                products += listOfProducts.get(i).getName() + ", ";
+            }
         }
         return products;
-
     }
 
     public int getTotalProductPrice() {

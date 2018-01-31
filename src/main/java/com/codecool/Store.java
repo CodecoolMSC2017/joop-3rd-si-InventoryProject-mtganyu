@@ -170,8 +170,9 @@ public abstract class Store implements StoreCapable {
 
 
     public void store(Product product) {
-        saveToXml();
         storeProduct(product);
+        saveToXml();
+
 
     }
 }

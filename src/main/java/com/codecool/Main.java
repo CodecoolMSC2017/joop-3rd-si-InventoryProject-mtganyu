@@ -5,11 +5,9 @@ public class Main {
         PresistentStore ps = new PresistentStore();
         StoreManager store = new StoreManager();
         store.addStorage(ps);
-       // store.addCDProduct("Hell hath no fury ", 1500, 10);
+        store.addCDProduct("Hell hath no fury ", 1500, 10);
         store.addBookProduct("A Hosszútávfutó Magányossága", 2500, 500);
-        store.addBookProduct("A Hosszútávfutó Magányossága", 2500, 500);
-
-        ps.loadProducts();
+        //ps.loadProducts();
         System.out.println(store.listProducts());
         System.out.println(store.getTotalProductPrice());
 
