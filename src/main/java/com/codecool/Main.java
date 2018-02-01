@@ -7,7 +7,8 @@ public class Main {
         store.addStorage(ps);
         store.addCDProduct("Hell hath no fury ", 1500, 10);
         store.addBookProduct("A Hosszútávfutó Magányossága", 2500, 500);
-        //ps.loadProducts();
+        ps.store("Products.xml");
+        //ps.loadProducts("Products.xml");
         System.out.println(store.listProducts());
         System.out.println(store.getTotalProductPrice());
 

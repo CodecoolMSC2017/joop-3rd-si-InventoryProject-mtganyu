@@ -32,19 +32,16 @@ public abstract class Store implements StoreCapable {
     @Override
     public List<Product> getAllProduct() {
         return productList;
-
     }
 
     @Override
-    public void storeCDProduct(String name, int price, int size) {
-        Product CD = new CDProduct(name, price, size);
-        store(CD);
+    public void storeCDProduct(String name, int price, int tracks) {
+        storeProduct(createProduct("cd", name, price, tracks));
     }
 
     @Override
-    public void storeBookProduct(String name, int price, int size) {
-        Product book = new BookProduct(name, price, size);
-        store(book);
+    public void storeBookProduct(String name, int price, int pages) {
+        storeProduct(createProduct("book", name, price, pages));
     }
 
     protected abstract void storeProduct(Product product);
@@ -62,7 +59,7 @@ public abstract class Store implements StoreCapable {
 
     }
 
-    private void saveToXml() {
+    private void saveToXml(String fileName) {
 
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -71,7 +68,7 @@ public abstract class Store implements StoreCapable {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("Products.xml"));
+            StreamResult result = new StreamResult(new File(fileName));
 
             Element rootElement = doc.createElement("Store");
             doc.appendChild(rootElement);
@@ -116,7 +113,7 @@ public abstract class Store implements StoreCapable {
                     product1.appendChild(price);
 
                     Element numOfTracks = doc.createElement("pages");
-                    numOfTracks.appendChild(doc.createTextNode(Integer.toString(((BookProduct) getAllProduct().get(i)).getNumOfPages())));
+                    numOfTracks.appendChild(doc.createTextNode(Integer.toString(((BookProduct) getAllProduct().get(i)).getNumOfPage())));
                     product1.appendChild(numOfTracks);
 
                     transformer.transform(source, result);
@@ -131,9 +128,10 @@ public abstract class Store implements StoreCapable {
 
 
 
-    public List<Product> loadProducts() {
+
+    public List<Product> loadProducts(String filename) {
         try {
-            File fXmlFile = new File("Products.xml");
+            File fXmlFile = new File(filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
@@ -169,9 +167,8 @@ public abstract class Store implements StoreCapable {
 
 
 
-    public void store(Product product) {
-        storeProduct(product);
-        saveToXml();
+    public void store(String filename) {
+        saveToXml(filename);
 
 
     }
