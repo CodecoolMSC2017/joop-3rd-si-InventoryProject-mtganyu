@@ -27,7 +27,7 @@ class StoreTest {
 
     @Test
     void storeCDProduct() {
-        assertEquals("Hell hath no fury ",myPresistent.getAllProduct().get(0).getName());
+        assertEquals("Legyek ura",myPresistent.getAllProduct().get(3).getName());
 
     }
 
