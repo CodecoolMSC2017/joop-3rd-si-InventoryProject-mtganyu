@@ -15,35 +15,32 @@ class StoreTest {
     @BeforeEach
     void setUp() {
         myPresistent = new PresistentStore();
-        testListOfProducts = myPresistent.loadProducts("TestStore.xml");
-        myPresistent.storeCDProduct("Pista",200,10);
-        myPresistent.storeBookProduct("Kokero's life",1000,200);
+        testListOfProducts = myPresistent.loadProducts("Products.xml");
+        myPresistent.storeCDProduct("Zambo jimmy best of",200,10);
+        myPresistent.storeBookProduct("Legyek ura",1000,200);
     }
 
     @Test
     void getAllProduct() {
-        assertEquals(myPresistent.getAllProduct().size(), 74);
+        assertEquals(4, myPresistent.getAllProduct().size());
     }
 
     @Test
     void storeCDProduct() {
-        assertEquals(myPresistent.getAllProduct().get(0).getName(),"Romantic");
+        assertEquals("Hell hath no fury ",myPresistent.getAllProduct().get(0).getName());
 
     }
 
     @Test
     void storeBookProduct() {
-        assertEquals(myPresistent.getAllProduct().get(3).getName(),"Kokero's life");
+        assertEquals("Zambo jimmy best of",myPresistent.getAllProduct().get(2).getName());
     }
 
     @Test
     void loadProducts() {
-        List<Product> loadTest = myPresistent.loadProducts("TestStore.xml");
-        assertEquals(loadTest.size(), 146);
+        List<Product> loadTest = myPresistent.loadProducts("Products.xml");
+        assertEquals(6, loadTest.size());
     }
 
-    @Test
-    void store() {
 
-    }
 }
