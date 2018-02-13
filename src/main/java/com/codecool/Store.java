@@ -10,15 +10,19 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+
 import java.io.File;
 
 import java.util.ArrayList;
@@ -74,8 +78,7 @@ public abstract class Store implements StoreCapable {
             doc.appendChild(rootElement);
 
 
-
-            for (int i = 0; i < getAllProduct().size() ; i++) {
+            for (int i = 0; i < getAllProduct().size(); i++) {
                 if (getAllProduct().get(i) instanceof CDProduct) {
                     Element product1 = doc.createElement("Product");
                     rootElement.appendChild(product1);
@@ -127,8 +130,6 @@ public abstract class Store implements StoreCapable {
     }
 
 
-
-
     public List<Product> loadProducts(String filename) {
         try {
             File fXmlFile = new File(filename);
@@ -163,8 +164,6 @@ public abstract class Store implements StoreCapable {
         }
         return productList;
     }
-
-
 
 
     public void store(String filename) {
